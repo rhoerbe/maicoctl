@@ -1,0 +1,310 @@
+<form>
+    <text>
+        <id>FanLevel</id>
+        <value>Nenn</value>
+    </text>
+    <text>
+        <id>VolumenstromZu</id>
+        <value>175 m3/h</value>
+    </text>
+    <text>
+        <id>VolumenstromAb</id>
+        <value>175 m3/h</value>
+    </text>
+    <text>
+        <id>DrehzahlZu</id>
+        <value>942 rpm</value>
+    </text>
+    <text>
+        <id>DrehzahlAb</id>
+        <value>884 rpm</value>
+    </text>
+    <text>
+        <id>FilterRestGeraet</id>
+        <value>183 Tage</value>
+    </text>
+    <text>
+        <id>FilterSchmutzGeraet</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>FilterRestAussen</id>
+        <value>320 Tage</value>
+    </text>
+    <text>
+        <id>FilterRestRaum</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>SollDruck</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>IstDruck</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>TempRaum</id>
+        <value>22.4 �C</value>
+    </text>
+    <text>
+        <id>T_AUL_vor_EWT</id>
+        <value>- �C</value>
+    </text>
+    <text>
+        <id>T_Lufteintritt</id>
+        <value>9.7 �C</value>
+    </text>
+    <text>
+        <id>T_Zuluft</id>
+        <value>22.2 �C</value>
+    </text>
+    <text>
+        <id>T_Abluft</id>
+        <value>22.4 �C</value>
+    </text>
+    <text>
+        <id>T_Fortluft</id>
+        <value>10.1 �C</value>
+    </text>
+    <text>
+        <id>RfIntern</id>
+        <value>45 %</value>
+    </text>
+    <text>
+        <id>Sensor1</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>Sensor2</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>Sensor3</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>Sensor4</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>SensorRfExtern</id>
+        <value>0 %</value>
+    </text>
+    <text>
+        <id>SensorLqExtern</id>
+        <value>0 ppm</value>
+    </text>
+    <text>
+        <id>Fan_State1</id>
+        <value>ein</value>
+    </text>
+    <text>
+        <id>Fan_State2</id>
+        <value>ein</value>
+    </text>
+    <text>
+        <id>BypassZustand</id>
+        <value>zu</value>
+    </text>
+    <text>
+        <id>VhrZustand</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>SchaltBasis</id>
+        <value>aus</value>
+    </text>
+    <text>
+        <id>ZoneZustand</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>SoleZp1</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>LuftZp1</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>NhrZp1</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>BSTD_FL</id>
+        <value>134 h</value>
+    </text>
+    <text>
+        <id>BSTD_RL</id>
+        <value>5463 h</value>
+    </text>
+    <text>
+        <id>BSTD_NL</id>
+        <value>11826 h</value>
+    </text>
+    <text>
+        <id>BSTD_IL</id>
+        <value>2948 h</value>
+    </text>
+    <text>
+        <id>BSTD_Luftgesamt</id>
+        <value>20371 h</value>
+    </text>
+    <text>
+        <id>BSTD_Schaltkontakt</id>
+        <value>13 h</value>
+    </text>
+    <text>
+        <id>BSTD_SoleUwp</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>BSTD_Zone</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>BSTD_LuftEwt</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>BSTD_Nhr</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>SwVersionLT</id>
+        <value>1.1.0</value>
+    </text>
+    <text>
+        <id>SwVersionBDE</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>SwVersionSnr</id>
+        <value>M1732952215EYX1X4AA8</value>
+    </text>
+    <text>
+        <id>InetDhcp</id>
+        <value>statische IP</value>
+    </text>
+    <text>
+        <id>InetIp</id>
+        <value>192.168.0.14</value>
+    </text>
+    <text>
+        <id>InetSubnet</id>
+        <value>255.255.255.0</value>
+    </text>
+    <text>
+        <id>InetGateway</id>
+        <value>192.168.1.1</value>
+    </text>
+    <text>
+        <id>InetDns</id>
+        <value>192.168.4.103</value>
+    </text>
+    <text>
+        <id>InetStatusServer</id>
+        <value>getrennt</value>
+    </text>
+    <text>
+        <id>EnOceanDev1</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>EnOceanDev2</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>EnOceanDev3</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>EnOceanDev4</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>EnOceanDev5</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>EnOceanDev6</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>EnOceanDev7</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>EnOceanDev8</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>aktuellesDatum</id>
+        <value>16.01.2021 22:08</value>
+    </text>
+    <text>
+        <id>Sensor1Typ</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>Sensor1Benennung</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>Sensor2Typ</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>Sensor2Benennung</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>Sensor3Typ</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>Sensor3Benennung</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>Sensor4Typ</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>Sensor4Benennung</id>
+        <value>-</value>
+    </text>
+    <text>
+        <id>EnOceanDev1Value</id>
+        <value>Kein Messwert</value>
+    </text>
+    <text>
+        <id>EnOceanDev2Value</id>
+        <value>Kein Messwert</value>
+    </text>
+    <text>
+        <id>EnOceanDev3Value</id>
+        <value>Kein Messwert</value>
+    </text>
+    <text>
+        <id>EnOceanDev4Value</id>
+        <value>Kein Messwert</value>
+    </text>
+    <text>
+        <id>EnOceanDev5Value</id>
+        <value>Kein Messwert</value>
+    </text>
+    <text>
+        <id>EnOceanDev6Value</id>
+        <value>Kein Messwert</value>
+    </text>
+    <text>
+        <id>EnOceanDev7Value</id>
+        <value>Kein Messwert</value>
+    </text>
+    <text>
+        <id>EnOceanDev8Value</id>
+        <value>Kein Messwert</value>
+    </text>
+</form>
