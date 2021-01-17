@@ -22,10 +22,14 @@ Install python 3.6+ venv with dependencies in requirements.txt
     python3 -m venv /path/to/venv
     pip install -r requirements.txt
 
+    # on a Raspberry OS one might need to install libatlas
+    sudo apt-get install libatlas-base-dev -Y
+
 
 To invoke the program on *nix from crontab etc:
 
     # set DATADIR, MAICOUSR and MAICOPW in the environment
+    mkdir -p DATADIR
     source <path tp venv>/bin/activate
     python main.py
 
