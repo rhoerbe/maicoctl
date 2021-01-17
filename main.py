@@ -1,17 +1,20 @@
 import datetime
 import re
+import os
 import sys
 import xml.etree.ElementTree as et
 from pathlib import Path
 import pandas as pd
 import requests
 
-LOGFILE = Path('data/kwl_log.csv')
-LASTSAMPLE = Path('data/kwl_log_last.csv')
-SAMPLEFILE = Path('data/kwp_detail.xml')
+DATADIR = os.getenv('DATADIR', 'data')
+LOGFILE = Path(DATADIR) / 'kwl_log.csv'
+LASTSAMPLE = Path(DATADIR) / 'kwl_log_last.csv'
+SAMPLEFILE = Path(DATADIR) / 'kwl_detail.xml'
 MAICOURL = 'http://192.168.0.14/details.cgx'
-USER = 'admin'
-PASS = ''
+USER = os.getenv('MAICOUSR', 'admin')
+PASS = os.getenv('MAICOPW', '')
+
 
 def is_selected(id: str) -> bool:
     return id in ('FanLevel', 'VolumenstromZu', 'DrehzahlZu', 'DrehzahlAb', 'T_Lufteintritt', 'T_Zuluft',
