@@ -3,6 +3,7 @@
 bindir=$(cd $(dirname $BASH_SOURCE[0]) && pwd)
 projhome=$(dirname $bindir)
 
-source $projhome/venv/bin/activate
-source $bindir/mqtt_pass.sh
-python $projhome/mqtt.py
+cd $projhome
+source venv/bin/activate
+source bin/mqtt_pass.sh
+python mqtt.py
