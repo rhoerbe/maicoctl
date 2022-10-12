@@ -1,0 +1,2 @@
+# copy this file to mqtt_pass.sh and insert the correct password
+export MQTT_PASS=

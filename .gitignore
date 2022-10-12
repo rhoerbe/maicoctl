@@ -1,4 +1,5 @@
 # Project exclude paths
 .idea/
+/bin/mqtt_pass.sh
 /venv/
 /venv2/
