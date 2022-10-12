@@ -11,7 +11,8 @@ DATADIR = os.getenv('DATADIR', 'data')
 LOGFILE = Path(DATADIR) / 'kwl_log.csv'
 LASTSAMPLE = Path(DATADIR) / 'kwl_log_last.csv'
 SAMPLEFILE = Path(DATADIR) / 'kwl_detail.xml'
-MAICOURL = 'http://192.168.0.14/details.cgx'
+MAICOHOST = os.getenv('MAICOHOST', '10.4.4.14')
+MAICOURL = f"http://{MAICOHOST}/details.cgx"
 USER = os.getenv('MAICOUSR', 'admin')
 PASS = os.getenv('MAICOPW', '')
 
