@@ -6,6 +6,8 @@ The invocation of the program will append a hard-coded set of parameters to a lo
 
 The intended use is to execute the program in regular intervals, such as 60 minutes.
 
+main.py will write to a log file, whereas mqtt.py will publish messages via mqtt.
+
 ## Maico
 
 Maico's WS 320 is the central unit for a whole-house ventilation system. 
