@@ -56,13 +56,18 @@ def convert_xml_to_dict() -> dict:
 
 
 def is_selected_datapoint(id: str) -> bool:
-    return id in ('FanLevel', 'VolumenstromZu', 'DrehzahlZu', 'DrehzahlAb', 'T_Lufteintritt', 'T_Zuluft',
-                  'T_Abluft', 'T_Fortluft', 'RfIntern', 'BypassZustand', )
+    return id in get_sensors()
+
+
+def get_sensors() -> list:
+    return ['FanLevel', 'VolumenstromZu', 'DrehzahlZu', 'DrehzahlAb', 'T_Lufteintritt', 'T_Zuluft',
+     'T_Abluft', 'T_Fortluft', 'RfIntern', 'BypassZustand',]
 
 
 def strip_unit_from_value(value: str) -> str:
     v = re.sub(r' rpm$', '', value)
     v = re.sub(' m3/h$', '', v)
+    v = re.sub(' %', '', v)
     return re.sub(r' °C$', '', v)
 
 
@@ -89,10 +94,11 @@ def get_mqtt_client() -> paho.mqtt.client.Client:
 
 
 def publish_mqtt(mqtt_client: object, dataset: dict):
-        topic = '/home/ventilation/'
-        (result, mid) = mqtt_client.publish(topic, json.dumps(dataset))
-        if result:
-            print(f"mqtt publish returned status code {result}", file=sys.stderr)
+        sensor_topic = '/home/ventilation/SENSOR/'
+        for sensor in get_sensors():
+            (result, mid) = mqtt_client.publish(sensor_topic + sensor, dataset[sensor])
+            if result:
+                print(f"mqtt publish returned status code {result}", file=sys.stderr)
 
 
 if __name__ == '__main__':
