@@ -60,8 +60,8 @@ def is_selected_datapoint(id: str) -> bool:
 
 
 def get_sensors() -> list:
-    return ['FanLevel', 'VolumenstromZu', 'DrehzahlZu', 'DrehzahlAb', 'T_Lufteintritt', 'T_Zuluft',
-     'T_Abluft', 'T_Fortluft', 'RfIntern', 'BypassZustand',]
+    return ['FanLevel', 'VolumenstromAb', 'VolumenstromZu', 'DrehzahlZu', 'DrehzahlAb', 'T_Lufteintritt', 'T_Zuluft',
+     'T_Abluft', 'RfIntern', 'BypassZustand',]
 
 
 def strip_unit_from_value(value: str) -> str:
@@ -94,12 +94,19 @@ def get_mqtt_client() -> paho.mqtt.client.Client:
 
 
 def publish_mqtt(mqtt_client: object, dataset: dict):
+    # using a message per variable because of home assistant config issue -> single JSON msg would be preferred
         sensor_topic = '/home/ventilation/SENSOR/'
         for sensor in get_sensors():
             (result, mid) = mqtt_client.publish(sensor_topic + sensor, dataset[sensor])
             if result:
                 print(f"mqtt publish returned status code {result}", file=sys.stderr)
 
+
+def publish_mqtt_json(mqtt_client: object, dataset: dict):
+        topic = '/home/ventilation/SENSORS'
+        (result, mid) = mqtt_client.publish(topic, json.dumps(dataset))
+        if result:
+            print(f"mqtt publish returned status code {result}", file=sys.stderr)
 
 if __name__ == '__main__':
     try:
