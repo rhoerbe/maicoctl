@@ -36,3 +36,10 @@ To invoke the program on *nix from crontab etc:
     python main.py
 
 File locations and configuration fo data to be logged must be done in the source code.
+
+
+## Note
+
+My Maico WS320 that I used to develop this interface has a built-in webserver that is not fully stable. 
+After some months the webserver gets stuck although the ventilation keeps running.
+Power cycling the device resolves the issue. I plan to use a Gosund SP1 with Tasmota to automate this from this program. 
