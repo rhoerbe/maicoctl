@@ -21,6 +21,9 @@ python main.py
 # MQTT publishing mode
 cp bin/mqtt_pass.sh.default bin/mqtt_pass.sh  # edit with MQTT password
 bin/mqtt_pub.sh
+
+# Home Assistant MQTT discovery (run once to register sensors)
+bin/discovery.sh
 ```
 
 ## Environment Variables
@@ -38,12 +41,13 @@ bin/mqtt_pub.sh
 
 ## Architecture
 
-Two independent entry points, both fetching from Maico's `/details.cgx` XML API:
+Three independent entry points:
 
-- **main.py**: Fetches XML, parses selected sensors, appends to CSV log (`data/kwl_log.csv`)
+- **main.py**: Fetches XML from Maico's `/details.cgx`, parses selected sensors, appends to CSV log (`data/kwl_log.csv`)
 - **mqtt.py**: Fetches XML, parses selected sensors, publishes individual messages per sensor to MQTT topic `/home/ventilation/SENSOR/<sensor_name>`
+- **discovery.py**: Publishes Home Assistant MQTT autodiscovery messages for all sensors (run once to register sensors in HA)
 
-Both scripts write intermediate XML to `DATADIR/kwl_detail.xml`.
+main.py and mqtt.py write intermediate XML to `DATADIR/kwl_detail.xml`.
 
 ## Monitored Sensors
 
