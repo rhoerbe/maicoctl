@@ -86,16 +86,19 @@ def strip_unit_from_value(value: str) -> str:
 
 
 def get_mqtt_client() -> paho.mqtt.client.Client:
-    def on_connect(client, userdata, flags, rc, unused):
-        if rc == 0:
+    def on_connect(client, userdata, flags, reason_code, properties):
+        if reason_code == 0:
             client.connected_flag = True
         else:
-            print(f"Connect to MQTT broker failed with status {rc}", file=sys.stderr)
+            print(f"Connect to MQTT broker failed with status {reason_code}", file=sys.stderr)
             client.connected_flag = False
 
-    client = mqtt.Client(client_id=MQTT_CLIENT,
-                         transport='tcp',
-                         protocol=mqtt.MQTTv5)
+    client = mqtt.Client(
+        callback_api_version=mqtt.CallbackAPIVersion.VERSION2,
+        client_id=MQTT_CLIENT,
+        transport='tcp',
+        protocol=mqtt.MQTTv5,
+    )
     client.username_pw_set(MQTT_USER, MQTT_PASS)
     client.on_connect = on_connect
     client.connect(MQTT_BROKER)
