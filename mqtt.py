@@ -35,8 +35,8 @@ FAN_LEVEL_MAP = {
 }
 
 BYPASS_STATE_MAP = {
-    "Geschlossen": 0,
-    "Offen": 1,
+    "zu": 0,
+    "auf": 1,
 }
 
 def main():
