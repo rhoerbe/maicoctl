@@ -25,6 +25,20 @@ MQTT_PASS = os.getenv('MQTT_PASS', '')
 class MqttConnectError(Exception):
     pass
 
+
+# Numeric mappings for text-valued sensors
+FAN_LEVEL_MAP = {
+    "Aus": 0,
+    "Reduziert": 1,
+    "Nenn": 2,
+    "Feuchteschutz": 3,
+}
+
+BYPASS_STATE_MAP = {
+    "Geschlossen": 0,
+    "Offen": 1,
+}
+
 def main():
     get_sample_from_maico()
     dataset = convert_xml_to_dict()
@@ -100,6 +114,19 @@ def publish_mqtt(mqtt_client: object, dataset: dict):
             (result, mid) = mqtt_client.publish(sensor_topic + sensor, dataset[sensor])
             if result:
                 print(f"mqtt publish returned status code {result}", file=sys.stderr)
+
+        # Publish numeric variants for text-valued sensors
+        if 'FanLevel' in dataset:
+            fan_level_num = FAN_LEVEL_MAP.get(dataset['FanLevel'], -1)
+            (result, mid) = mqtt_client.publish(sensor_topic + 'FanLevelNum', fan_level_num)
+            if result:
+                print(f"mqtt publish FanLevelNum returned status code {result}", file=sys.stderr)
+
+        if 'BypassZustand' in dataset:
+            bypass_num = BYPASS_STATE_MAP.get(dataset['BypassZustand'], -1)
+            (result, mid) = mqtt_client.publish(sensor_topic + 'BypassZustandNum', bypass_num)
+            if result:
+                print(f"mqtt publish BypassZustandNum returned status code {result}", file=sys.stderr)
 
 
 def publish_mqtt_json(mqtt_client: object, dataset: dict):

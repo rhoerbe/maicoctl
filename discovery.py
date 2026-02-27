@@ -15,6 +15,7 @@ import logging
 import os
 import sys
 import time
+from typing import Optional
 
 import paho.mqtt.client as mqtt
 
@@ -36,6 +37,7 @@ STATE_TOPIC_BASE = "/home/ventilation/SENSOR"
 # device_class None means no HA device class
 SENSORS = [
     ("FanLevel", "Fan Level", None, None, "mdi:fan"),
+    ("FanLevelNum", "Fan Level Numeric", None, None, "mdi:fan"),
     ("VolumenstromZu", "Supply Air Flow", None, "m³/h", "mdi:weather-windy"),
     ("VolumenstromAb", "Extract Air Flow", None, "m³/h", "mdi:weather-windy"),
     ("DrehzahlZu", "Supply Fan Speed", None, "rpm", "mdi:rotate-right"),
@@ -45,7 +47,11 @@ SENSORS = [
     ("T_Abluft", "Extract Air Temperature", "temperature", "°C", None),
     ("RfIntern", "Internal Humidity", "humidity", "%", None),
     ("BypassZustand", "Bypass State", None, None, "mdi:valve"),
+    ("BypassZustandNum", "Bypass State Numeric", None, None, "mdi:valve"),
 ]
+
+# Text-valued sensors that should NOT have state_class: measurement
+TEXT_SENSORS = {"FanLevel", "BypassZustand"}
 
 
 class MqttConnectError(Exception):
@@ -65,9 +71,9 @@ def _device_block() -> dict:
 def make_sensor_discovery_payload(
     sensor_id: str,
     name: str,
-    device_class: str | None,
-    unit: str | None,
-    icon: str | None,
+    device_class: Optional[str],
+    unit: Optional[str],
+    icon: Optional[str],
 ) -> dict:
     """Generate HA discovery payload for a sensor.
 
@@ -85,9 +91,12 @@ def make_sensor_discovery_payload(
         "name": name,
         "unique_id": f"{DEVICE_ID}_{sensor_id}",
         "state_topic": f"{STATE_TOPIC_BASE}/{sensor_id}",
-        "state_class": "measurement",
         "device": _device_block(),
     }
+
+    # Only add state_class for numeric sensors (not text-valued ones)
+    if sensor_id not in TEXT_SENSORS:
+        payload["state_class"] = "measurement"
 
     if device_class:
         payload["device_class"] = device_class
