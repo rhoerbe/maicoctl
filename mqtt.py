@@ -112,7 +112,7 @@ def get_mqtt_client() -> paho.mqtt.client.Client:
 
 def publish_mqtt(mqtt_client: object, dataset: dict):
     # using a message per variable because of home assistant config issue -> single JSON msg would be preferred
-        sensor_topic = '/home/ventilation/SENSOR/'
+        sensor_topic = 'tele/ventilation/SENSOR/'
         for sensor in get_sensors():
             (result, mid) = mqtt_client.publish(sensor_topic + sensor, dataset[sensor])
             if result:

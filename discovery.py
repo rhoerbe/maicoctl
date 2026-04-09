@@ -7,7 +7,7 @@ Discovery topics:
   homeassistant/sensor/maico_ws320/<sensor_id>/config
 
 State topics (existing):
-  /home/ventilation/SENSOR/<sensor_name>
+  tele/ventilation/SENSOR/<sensor_name>
 """
 
 import json
@@ -26,12 +26,12 @@ MANUFACTURER = "Maico"
 MODEL = "WS-320"
 DEVICE_ID = "maico_ws320"
 
-MQTT_CLIENT = os.getenv('MQTT_CLIENT', 'cloudberry.maico.discovery')
+MQTT_CLIENT = os.getenv('MQTT_CLIENT', 'cloudberry.local')
 MQTT_BROKER = os.getenv('MQTT_BROKER', '10.4.4.17')
 MQTT_USER = os.getenv('MQTT_USER', 'mqtt')
 MQTT_PASS = os.getenv('MQTT_PASS', '')
 
-STATE_TOPIC_BASE = "/home/ventilation/SENSOR"
+STATE_TOPIC_BASE = "tele/ventilation/SENSOR"
 
 # Sensor definitions: (sensor_id, name, device_class, unit, icon)
 # device_class None means no HA device class
