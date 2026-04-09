@@ -114,20 +114,20 @@ def publish_mqtt(mqtt_client: object, dataset: dict):
     # using a message per variable because of home assistant config issue -> single JSON msg would be preferred
         sensor_topic = 'tele/ventilation/SENSOR/'
         for sensor in get_sensors():
-            (result, mid) = mqtt_client.publish(sensor_topic + sensor, dataset[sensor])
+            (result, mid) = mqtt_client.publish(sensor_topic + sensor, dataset[sensor], retain=True)
             if result:
                 print(f"mqtt publish returned status code {result}", file=sys.stderr)
 
         # Publish numeric variants for text-valued sensors
         if 'FanLevel' in dataset:
             fan_level_num = FAN_LEVEL_MAP.get(dataset['FanLevel'], -1)
-            (result, mid) = mqtt_client.publish(sensor_topic + 'FanLevelNum', fan_level_num)
+            (result, mid) = mqtt_client.publish(sensor_topic + 'FanLevelNum', fan_level_num, retain=True)
             if result:
                 print(f"mqtt publish FanLevelNum returned status code {result}", file=sys.stderr)
 
         if 'BypassZustand' in dataset:
             bypass_num = BYPASS_STATE_MAP.get(dataset['BypassZustand'], -1)
-            (result, mid) = mqtt_client.publish(sensor_topic + 'BypassZustandNum', bypass_num)
+            (result, mid) = mqtt_client.publish(sensor_topic + 'BypassZustandNum', bypass_num, retain=True)
             if result:
                 print(f"mqtt publish BypassZustandNum returned status code {result}", file=sys.stderr)
 
